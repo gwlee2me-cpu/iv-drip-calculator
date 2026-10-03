@@ -120,7 +120,7 @@ html, body {
 }
 
 .time-field {
-  flex: 1;
+  flex: 4;
   position: relative;
 }
 
