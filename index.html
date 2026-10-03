@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>수액 속도 계산기</title>
+<meta name="theme-color" content="#2563eb">
+<meta name="description" content="수액량, 주입시간, drip factor를 입력하면 몇 초에 1방울인지 바로 계산해주는 간단한 보조 계산기">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="수액계산기">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="title-bar">
+  <h1>수액 속도 계산기</h1>
+</header>
+
+<main class="container">
+
+  <!-- 1. 수액량 -->
+  <section class="card">
+    <label class="section-label" for="volume">수액량 (mL)</label>
+    <input type="number" id="volume" class="big-input" inputmode="decimal" placeholder="예: 500" min="0" step="any">
+    <div class="quick-grid" id="volumeQuick">
+      <button type="button" class="quick-btn" data-volume="100">100</button>
+      <button type="button" class="quick-btn" data-volume="250">250</button>
+      <button type="button" class="quick-btn" data-volume="300">300</button>
+      <button type="button" class="quick-btn" data-volume="500">500</button>
+      <button type="button" class="quick-btn" data-volume="1000">1000</button>
+      <button type="button" class="quick-btn" data-volume="1443">1443</button>
+    </div>
+  </section>
+
+  <!-- 2. 주입시간 -->
+  <section class="card">
+    <label class="section-label">주입시간</label>
+    <div class="time-row">
+      <div class="time-field">
+        <input type="number" id="hour" class="big-input" inputmode="numeric" placeholder="0" min="0" step="any">
+        <span class="time-unit">시간</span>
+      </div>
+      <div class="time-field">
+        <input type="number" id="minute" class="big-input" inputmode="numeric" placeholder="0" min="0" max="59" step="any">
+        <span class="time-unit">분</span>
+      </div>
+    </div>
+    <div class="quick-grid" id="timeQuick">
+      <button type="button" class="quick-btn" data-hour="24" data-min="0">24시간</button>
+      <button type="button" class="quick-btn" data-hour="12" data-min="0">12시간</button>
+      <button type="button" class="quick-btn" data-hour="8" data-min="0">8시간</button>
+      <button type="button" class="quick-btn" data-hour="4" data-min="0">4시간</button>
+      <button type="button" class="quick-btn" data-hour="1" data-min="0">1시간</button>
+      <button type="button" class="quick-btn" data-hour="0" data-min="30">30분</button>
+      <button type="button" class="quick-btn" data-hour="0" data-min="15">15분</button>
+    </div>
+  </section>
+
+  <!-- 3. gtt/mL -->
+  <section class="card">
+    <label class="section-label">수액세트 drip factor (gtt/mL)</label>
+    <div class="quick-grid four" id="dripQuick">
+      <button type="button" class="quick-btn drip-btn" data-drip="10">10</button>
+      <button type="button" class="quick-btn drip-btn" data-drip="15">15</button>
+      <button type="button" class="quick-btn drip-btn" data-drip="20">20</button>
+      <button type="button" class="quick-btn drip-btn" data-drip="60">60</button>
+    </div>
+    <input type="number" id="dripCustom" class="big-input" inputmode="decimal" placeholder="직접 입력 (gtt/mL)" min="0" step="any">
+    <div class="current-drip">현재 선택: <strong id="currentDripLabel">20 gtt/mL</strong></div>
+  </section>
+
+  <!-- 4. 결과 -->
+  <section class="card result-card" id="resultCard">
+    <div id="errorMsg" class="error-msg hidden">수액량과 주입시간을 입력해주세요.</div>
+
+    <div id="resultBlock" class="hidden">
+      <div class="result-primary" id="primaryResult">약 0초에 1방울</div>
+      <div class="result-alt hidden" id="altResult"></div>
+      <div class="result-sub">
+        <span id="mlhrResult">0 mL/hr</span>
+        <span class="dot">·</span>
+        <span id="gttminResult">0 gtt/min</span>
+      </div>
+    </div>
+  </section>
+
+  <button type="button" id="resetBtn" class="reset-btn">초기화</button>
+
+  <footer class="disclaimer">
+    본 도구는 수액 속도 계산을 돕기 위한 보조 계산기입니다.<br>
+    실제 적용 시 처방 내용과 사용 중인 수액세트의 gtt/mL 표시를 반드시 확인하세요.<br>
+    의료 판단 도구가 아닙니다.
+  </footer>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
