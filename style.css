@@ -92,15 +92,31 @@ html, body {
   margin-bottom: 10px;
 }
 
+#timeQuick {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+#timeQuick .quick-btn:nth-child(-n + 3) {
+  grid-column: span 4;
+}
+
+#timeQuick .quick-btn:nth-child(n + 4) {
+  grid-column: span 3;
+}
+
 .quick-btn {
-  padding: 14px 4px;
-  font-size: 1.05rem;
+  padding: 13px 4px;
+  font-size: 1.15rem;
   font-weight: 700;
   border: 2px solid var(--eu-soft-border);
   background: var(--eu-soft);
   color: var(--eu-soft-text);
-  border-radius: 10px;
+  border-radius: 9px;
   cursor: pointer;
+}
+
+#timeQuick .quick-btn {
+  font-size: 1.05rem;
 }
 
 .quick-btn:active {
@@ -166,7 +182,7 @@ html, body {
 
 .result-primary {
   color: var(--eu-result-text);
-  font-size: 2.1rem;
+  font-size: 1.6rem;
   font-weight: 800;
   line-height: 1.25;
 }
