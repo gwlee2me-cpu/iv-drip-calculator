@@ -67,7 +67,7 @@ html, body {
   width: 100%;
   font-size: 1.4rem;
   font-weight: 600;
-  padding: 12px 14px;
+  padding: 10px 12px;
   border: 2px solid var(--eu-soft-border);
   border-radius: 10px;
   background: var(--eu-soft);
@@ -136,7 +136,7 @@ html, body {
 }
 
 .time-field {
-  flex: 1;
+  flex: 4;
   position: relative;
 }
 
