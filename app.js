@@ -50,10 +50,6 @@
     return fixed;
   }
 
-  function roundSmart(num) {
-    return Math.round(num);
-  }
-
   function calculate() {
     var volume = parseFloat(volumeInput.value);
     var hour = parseFloat(hourInput.value);
@@ -98,16 +94,9 @@
     errorMsg.classList.add("hidden");
     resultBlock.classList.remove("hidden");
 
-    if (secPerDrop >= 1) {
-      primaryResult.textContent = "약 " + formatNumber(secPerDrop, 1) + "초에 1방울";
-      altResult.classList.add("hidden");
-    } else {
-      var dropsPerSec = 1 / secPerDrop;
-      var dropsPer5Sec = roundSmart(dropsPerSec * 5);
-      primaryResult.textContent = "약 5초에 " + dropsPer5Sec + "방울";
-      altResult.textContent = "약 " + formatNumber(dropsPerSec, 1) + "방울/초";
-      altResult.classList.remove("hidden");
-    }
+    var decimals = secPerDrop >= 1 ? 1 : 2;
+    primaryResult.textContent = "약 " + formatNumber(secPerDrop, decimals) + "초에 1방울";
+    altResult.classList.add("hidden");
 
     mlhrResult.textContent = formatNumber(mlPerHr, 1) + " mL/hr";
     gttminResult.textContent = formatNumber(gttPerMin, 1) + " gtt/min";

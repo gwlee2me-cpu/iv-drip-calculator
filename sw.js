@@ -1,4 +1,4 @@
-var CACHE_NAME = "iv-drip-calc-v2";
+var CACHE_NAME = "iv-drip-calc-v3";
 var ASSETS = [
   "./",
   "./index.html",
